@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "NLP Demo",
-    "description": "演示视频将会在此页面展示。视频准备好后，只需要替换 embedUrl 即可。",
+    "description": "An interactive biological knowledge graph system powered by large language models, enabling natural language-driven exploration and visualization of animal knowledge.",
     "lang": "zh-CN"
   },
   "video": {
