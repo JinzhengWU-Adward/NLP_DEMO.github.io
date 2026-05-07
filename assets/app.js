@@ -72,16 +72,23 @@
 
     const host = u.hostname.replace(/^www\./, '').toLowerCase();
 
+    const ytBase = 'https://www.youtube-nocookie.com/embed/';
+
+    function addCommonYouTubeParams(embed) {
+      embed.searchParams.set('rel', '0');
+      embed.searchParams.set('playsinline', '1');
+      return embed;
+    }
+
     // YouTube watch → embed
     if ((host === 'youtube.com' || host === 'm.youtube.com') && u.pathname === '/watch') {
       const id = u.searchParams.get('v');
       if (id) {
-        const embed = new URL(`https://www.youtube.com/embed/${id}`);
+        const embed = new URL(`${ytBase}${id}`);
         // Keep only a small safe subset of params
         const start = u.searchParams.get('start') || u.searchParams.get('t');
         if (start) embed.searchParams.set('start', String(start).replace(/[^\d]/g, ''));
-        embed.searchParams.set('rel', '0');
-        return embed.toString();
+        return addCommonYouTubeParams(embed).toString();
       }
     }
 
@@ -89,11 +96,10 @@
     if (host === 'youtu.be') {
       const id = u.pathname.split('/').filter(Boolean)[0];
       if (id) {
-        const embed = new URL(`https://www.youtube.com/embed/${id}`);
+        const embed = new URL(`${ytBase}${id}`);
         const t = u.searchParams.get('t');
         if (t) embed.searchParams.set('start', String(t).replace(/[^\d]/g, ''));
-        embed.searchParams.set('rel', '0');
-        return embed.toString();
+        return addCommonYouTubeParams(embed).toString();
       }
     }
 
