@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#0b1020" />
+
+    <title>NLP Demo</title>
+    <meta
+      name="description"
+      content="演示视频将会在此页面展示。视频准备好后，只需要替换 embedUrl 即可。"
+      data-meta="description"
+    />
+    <link rel="canonical" href="/" data-link="canonical" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="NLP Demo" data-meta="og:title" />
+    <meta
+      property="og:description"
+      content="演示视频将会在此页面展示。视频准备好后，只需要替换 embedUrl 即可。"
+      data-meta="og:description"
+    />
+    <meta property="og:image" content="assets/cover.svg" data-meta="og:image" />
+    <meta property="og:url" content="/" data-meta="og:url" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="NLP Demo" data-meta="twitter:title" />
+    <meta
+      name="twitter:description"
+      content="演示视频将会在此页面展示。视频准备好后，只需要替换 embedUrl 即可。"
+      data-meta="twitter:description"
+    />
+    <meta name="twitter:image" content="assets/cover.svg" data-meta="twitter:image" />
+
+    <link rel="preload" href="assets/style.css" as="style" />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="top">
+        <div class="brand">
+          <h1 class="title" data-site-title>NLP Demo</h1>
+          <p class="desc" data-site-desc>
+            演示视频将会在此页面展示。视频准备好后，只需要替换 embedUrl 即可。
+          </p>
+        </div>
+        <div class="pillRow" aria-label="状态信息">
+          <div class="pill" title="视频状态">
+            <span class="dot" data-status-dot></span>
+            <span data-status-text>ComingSoon</span>
+          </div>
+          <div class="pill" title="配置来源">
+            <span class="dot"></span>
+            <span><span class="code">site.json</span></span>
+          </div>
+        </div>
+      </header>
+
+      <section class="card" aria-label="视频展示区域">
+        <div class="videoHeader">
+          <p class="videoTitle" data-video-title>演示视频</p>
+          <div class="meta">
+            UpdatedAt:
+            <span data-kv-updated-at>--</span>
+          </div>
+        </div>
+
+        <div class="videoStage" data-video-stage>
+          <div class="ratio">
+            <div data-embed-container></div>
+
+            <div class="placeholder" data-placeholder>
+              <div class="placeholderInner" role="status" aria-live="polite">
+                <p class="placeholderTitle">
+                  演示视频
+                  <span class="badge">即将上线</span>
+                </p>
+                <p class="placeholderText" data-placeholder-note>
+                  视频暂未发布。后续将在此处提供可嵌入的链接（iframe）。
+                </p>
+                <div class="actions">
+                  <a class="btn primary" data-primary-cta hidden>查看更新</a>
+                  <a class="btn" href="./site.json" target="_blank" rel="noopener noreferrer"
+                    >查看当前配置</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="below" aria-label="说明">
+        <div class="panel">
+          <h2>如何替换为真实视频</h2>
+          <p>
+            当你拿到平台提供的“嵌入（iframe）链接”后，把 <span class="code">site.json</span>
+            里的 <span class="code">video.embedUrl</span> 填上即可自动显示。
+          </p>
+          <div class="kv" role="list">
+            <div class="k" role="listitem">embedUrl</div>
+            <div class="v"><span class="code" data-kv-embed-url>(empty)</span></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>建议</h2>
+          <p>
+            优先使用平台“分享 → 嵌入”的 URL（而不是普通播放页 URL）。如果平台限制跨域或禁止嵌入，页面会保持占位状态。
+          </p>
+        </div>
+      </section>
+
+      <footer>
+        <span>© <span data-site-title>NLP Demo</span></span>
+        <span>Hosted by GitHub Pages</span>
+      </footer>
+    </main>
+
+    <script defer src="assets/app.js"></script>
+  </body>
+</html>
+
