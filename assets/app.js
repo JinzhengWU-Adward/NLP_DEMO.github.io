@@ -59,9 +59,51 @@
     setText(els.statusText, isLive ? 'Live' : 'ComingSoon');
   }
 
+  function toEmbeddableUrl(raw) {
+    const s = (raw ?? '').toString().trim();
+    if (!s.length) return '';
+
+    let u;
+    try {
+      u = new URL(s, window.location.href);
+    } catch {
+      return s;
+    }
+
+    const host = u.hostname.replace(/^www\./, '').toLowerCase();
+
+    // YouTube watch → embed
+    if ((host === 'youtube.com' || host === 'm.youtube.com') && u.pathname === '/watch') {
+      const id = u.searchParams.get('v');
+      if (id) {
+        const embed = new URL(`https://www.youtube.com/embed/${id}`);
+        // Keep only a small safe subset of params
+        const start = u.searchParams.get('start') || u.searchParams.get('t');
+        if (start) embed.searchParams.set('start', String(start).replace(/[^\d]/g, ''));
+        embed.searchParams.set('rel', '0');
+        return embed.toString();
+      }
+    }
+
+    // youtu.be/<id> → embed
+    if (host === 'youtu.be') {
+      const id = u.pathname.split('/').filter(Boolean)[0];
+      if (id) {
+        const embed = new URL(`https://www.youtube.com/embed/${id}`);
+        const t = u.searchParams.get('t');
+        if (t) embed.searchParams.set('start', String(t).replace(/[^\d]/g, ''));
+        embed.searchParams.set('rel', '0');
+        return embed.toString();
+      }
+    }
+
+    return u.toString();
+  }
+
   function renderEmbed(embedUrl) {
-    const url = (embedUrl ?? '').toString().trim();
-    setText(els.kvEmbedUrl, url.length ? url : '(empty)');
+    const raw = (embedUrl ?? '').toString().trim();
+    const url = toEmbeddableUrl(raw);
+    setText(els.kvEmbedUrl, raw.length ? raw : '(empty)');
 
     if (!els.embedContainer || !els.placeholder) return;
 
