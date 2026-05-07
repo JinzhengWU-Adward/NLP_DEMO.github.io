@@ -98,6 +98,9 @@ a{color:inherit}
   line-height:1.5;
   color:var(--muted);
 }
+.embedHint[hidden]{
+  display:none !important;
+}
 .embedHint a{
   color:rgba(255,255,255,.86);
   text-decoration:underline;
@@ -123,6 +126,9 @@ a{color:inherit}
   display:grid;
   place-items:center;
   padding:18px;
+}
+.placeholder[hidden]{
+  display:none !important;
 }
 .placeholderInner{
   width:min(760px, 100%);
