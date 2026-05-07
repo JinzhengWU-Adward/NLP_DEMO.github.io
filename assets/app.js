@@ -9,6 +9,8 @@
     embedContainer: document.querySelector('[data-embed-container]'),
     placeholder: document.querySelector('[data-placeholder]'),
     placeholderNote: document.querySelector('[data-placeholder-note]'),
+    embedHint: document.querySelector('[data-embed-hint]'),
+    embedOpen: document.querySelector('[data-embed-open]'),
     cta: document.querySelector('[data-primary-cta]'),
     kvEmbedUrl: document.querySelector('[data-kv-embed-url]'),
     kvUpdatedAt: document.querySelector('[data-kv-updated-at]'),
@@ -116,9 +118,13 @@
     if (!url.length) {
       els.embedContainer.replaceChildren();
       els.placeholder.removeAttribute('hidden');
+      if (els.embedHint) els.embedHint.setAttribute('hidden', 'hidden');
       setLive(false);
       return;
     }
+
+    if (els.embedOpen) els.embedOpen.setAttribute('href', raw);
+    if (els.embedHint) els.embedHint.removeAttribute('hidden');
 
     const iframe = document.createElement('iframe');
     iframe.src = url;

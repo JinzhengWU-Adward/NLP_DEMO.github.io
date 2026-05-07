@@ -92,6 +92,17 @@ a{color:inherit}
 }
 
 .videoStage{padding:0 16px 16px}
+.embedHint{
+  margin:10px 2px 0;
+  font-size:13px;
+  line-height:1.5;
+  color:var(--muted);
+}
+.embedHint a{
+  color:rgba(255,255,255,.86);
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
 .ratio{
   position:relative;
   width:100%;
